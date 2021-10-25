@@ -8,12 +8,17 @@
 </head>
 <body>
     <h1> Hero Details</h1>
-    <ul>
-        {% for hero in single_hero %}
-        <li> <h2>{{hero.name}}</h2> </li>
-        {% endfor %}
+    {% for hero in single_hero %}
+    {{hero.name}}<br/>  
+    {{hero.alter_ego}}<br/>
+    {{hero.primary_ability}}<br/>
+    {{hero.secondary_ability}}<br/>
+    {{hero.catchphrase}}<br/> 
+    {% endfor %}
     </ul> 
     
+    <a href="{% url 'superheroes:index' %}">Back to Index</a>
+    <a href="{% url 'superheroes:update' %}">Update Hero Details</a>
 
 
 </body>
