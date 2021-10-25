@@ -7,6 +7,17 @@
     <title>Update Hero Details</title>
 </head>
 <body>
-    
+    {% for hero in all_heroes %}
+    <li> <h2>{{hero.name}}</h2> - <a href="{% url 'superheroes:update' hero.id %}">Click for Details</a> </li>
+    {% endfor %}
+    <!-- <form action= "{% url 'superheroes:update' %}" method= "post">
+        {% csrf_token %}
+        Name: <input type="type" name= "name" id="name"><br />
+        Alter Ego: <input type="text" name="alter_ego" id="alter_ego"><br />
+        Primary Ability: <input type="text" name= "primary" id="primary"><br />
+        Secondary Ability: <input type="text" name= "secondary" id="secondary"><br />
+        Catchphrase: <input type="text" name= "catchphrase" id="catchphrase"><br />
+        <input type= "submit" value="Update">
+    </form> -->
 </body>
 </html>

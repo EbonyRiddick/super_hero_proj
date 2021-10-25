@@ -31,17 +31,16 @@ def create(request):
         return render(request, 'superheroes/create.html')
 
 def update (request, hero_id):
-    update_hero= Superhero.objects.get(pk= hero_id)
+    update_hero= Superhero.objects.get(id= hero_id)
     update_hero.name = request.POST.get('name')
     update_hero.alter_ego = request.POST.get('alter_ego')
     update_hero.primary = request.POST.get('primary')
     update_hero.secondary = request.POST.get('secondary')
     update_hero.catchphrase = request.POST.get('catchphrase')
     update_hero.save()
-    return HttpResponse ('updated')
+    return HttpResponseRedirect (reverse('superheroes:detail'))
 
 def delete (request, hero_id):
-    remove_hero = Superhero.objects.get(pk= hero_id)
-    remove_hero.delete()
-    print( 'Hero deleted')
+    single_hero = Superhero.objects.filter(id= hero_id)
+    single_hero.delete()
     return HttpResponseRedirect(reverse('superheroes:index'))
